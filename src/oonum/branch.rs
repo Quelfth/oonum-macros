@@ -99,7 +99,7 @@ pub fn branch_oonum(args: TokenStream, item: TokenStream) -> Result<TokenStream>
 
         )*
 
-        impl From<#branch> -> #root {
+        impl From<#branch> for #root {
             fn from(value: #branch) -> Self {
                 value.into_super()
             }
