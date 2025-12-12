@@ -93,7 +93,7 @@ pub fn branch_oonum(args: TokenStream, item: TokenStream) -> Result<TokenStream>
 
             impl From<#vars> for #branch {
                 fn from(value: #vars) -> Self {
-                    value.into_super()
+                    ::oonum::Sub::into_super(value)
                 }
             }
 
@@ -101,7 +101,7 @@ pub fn branch_oonum(args: TokenStream, item: TokenStream) -> Result<TokenStream>
 
         impl From<#branch> for #root {
             fn from(value: #branch) -> Self {
-                value.into_super()
+                ::oonum::Sub::into_super(value)
             }
         }
 

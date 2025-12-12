@@ -60,7 +60,7 @@ pub fn root_oonum(item: TokenStream) -> Result<TokenStream> {
 
             impl From<#vars> for #root {
                 fn from(value: #vars) -> Self {
-                    value.into_super()
+                    ::oonum::Sub::into_super(value)
                 }
             }
         )*
