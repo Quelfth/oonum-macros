@@ -90,7 +90,20 @@ pub fn branch_oonum(args: TokenStream, item: TokenStream) -> Result<TokenStream>
                     matches!(supe, #branch::#vars(_))
                 }
             }
+
+            impl From<#vars> for #branch {
+                fn from(value: #vars) -> Self {
+                    value.into_super()
+                }
+            }
+
         )*
+
+        impl From<#branch> -> #root {
+            fn from(value: #branch) -> Self {
+                value.into_super()
+            }
+        }
 
         #dispatch
     }

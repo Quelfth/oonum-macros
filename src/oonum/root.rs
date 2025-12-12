@@ -57,6 +57,12 @@ pub fn root_oonum(item: TokenStream) -> Result<TokenStream> {
                     matches!(supe, #root::#vars(_))
                 }
             }
+
+            impl From<#vars> for #root {
+                fn from(value: #vars) -> Self {
+                    value.into_super()
+                }
+            }
         )*
 
         #dispatch

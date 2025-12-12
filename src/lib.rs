@@ -1,5 +1,4 @@
-use proc_macro::{Punct, TokenStream, TokenTree};
-use quote::quote;
+use proc_macro::TokenStream;
 
 mod dispatch;
 mod oonum;
@@ -27,6 +26,8 @@ pub fn dispatch_(item: TokenStream) -> TokenStream {
 #[cfg(feature = "function-style")]
 #[proc_macro]
 pub fn oonum_(args: TokenStream) -> TokenStream {
+    use proc_macro::{Punct, TokenTree};
+    use quote::quote;
     let mut iter = args.into_iter().peekable();
     if let Some(TokenTree::Punct(punct)) = iter.peek()
         && punct.as_char() == '@'
